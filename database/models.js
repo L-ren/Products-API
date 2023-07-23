@@ -13,7 +13,7 @@ module.exports.getProducts = async function(page = 1, count = 5) {
   let ids = [];
   for (let i = firstIndex; i <= lastIndex; i += 1) {
     ids.push(i);
-  };
+  };s
 
   const response = await pool.query({
     text: 'SELECT id, name, slogan, description, category, default_price FROM product WHERE id = ANY($1)',

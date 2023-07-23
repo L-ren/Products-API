@@ -11,6 +11,7 @@ const client = new Client({
 
 async function setUpDatabase() {
   await client.connect();
+  // paths to csv files
   const schema = fs.readFileSync(path.join(__dirname, '/schema.sql')).toString();
   const etl = fs.readFileSync(path.join(__dirname, '/etl.sql')).toString();
 
@@ -29,6 +30,7 @@ async function setUpDatabase() {
     // client.end();
   });
 
+  // test query to see if db population was successful
   await client.query(`SELECT * FROM product WHERE id=100`, (err, res) => {
     if (err) {
       console.log('Error executing query', err);
